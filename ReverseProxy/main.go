@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/base64"
+	"fmt"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -37,8 +38,11 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	logout(w, r)
 	cookie := getCookie(w, r)
+
+	logout(w, r, cookie)
+
+	log.Println(fmt.Sprintf("get cookie : %s", cookie))
 
 	if isCookieExist(cookie) {
 		proxyHandler(w, r)
@@ -57,10 +61,9 @@ func api(w http.ResponseWriter, r *http.Request) bool {
 	return false
 }
 
-func logout(w http.ResponseWriter, r *http.Request) {
-	if strings.Contains(r.RequestURI, "/logout") {
-		log.Println("logout")
-		delCookie(w, r)
+func logout(w http.ResponseWriter, r *http.Request, cookie *http.Cookie) {
+	if strings.Contains(r.RequestURI, "logout") {
+		clearCookie(w, cookie)
 	}
 }
 
@@ -111,27 +114,20 @@ func setCookie(w http.ResponseWriter, r *http.Request) {
 	expiration = expiration.AddDate(1, 0, 0)
 
 	// Generate cookie
-	cookie := http.Cookie{Name: "username", Value: "rain", Expires: expiration}
-
+	cookie := http.Cookie{Name: "username", Value: "rain", Path: "/", Expires: expiration}
 	// Set cookie
 	http.SetCookie(w, &cookie)
 }
 
-func delCookie(w http.ResponseWriter, r *http.Request) {
-	// Generate cookie
-	cookie := getCookie(w, r)
-	cookie.MaxAge = -1
+func clearCookie(w http.ResponseWriter, cookie *http.Cookie) {
+	cookie.Value = ""
 	// Set cookie
 	http.SetCookie(w, cookie)
+	log.Println(fmt.Sprintf("del cookie : %s", cookie))
 }
 
 func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
-	for _, cookie := range r.Cookies() {
-		log.Println(cookie)
-	}
 	if cookie, err := r.Cookie("username"); err == nil {
-
-		//log.Println(cookie)
 		return cookie
 	}
 	return nil

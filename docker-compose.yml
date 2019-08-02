@@ -5,20 +5,6 @@ networks:
         driver: bridge
 
 services:
-    nginx:
-        image: nginx
-        container_name: nginx
-        restart: always
-        volumes: # 文件夹映射
-            - ./config/.htpasswd:/home/.htpasswd:ro
-            - ./config/nginx.conf:/etc/nginx/nginx.conf:ro # nginx配置文件
-        ports: # 端口转发 宿主:docker
-            - "8080:80"
-        networks:
-            - reverse-proxy
-        links:
-            - grafana
-
     grafana:
         image: grafana/grafana:6.2.5 
         container_name: grafana

@@ -64,6 +64,7 @@ func api(w http.ResponseWriter, r *http.Request) bool {
 func logout(w http.ResponseWriter, r *http.Request, cookie *http.Cookie) {
 	if strings.Contains(r.RequestURI, "logout") {
 		clearCookie(w, cookie)
+		r.Header.Del("Authorization")
 	}
 }
 
@@ -111,7 +112,7 @@ func setCookie(w http.ResponseWriter, r *http.Request) {
 
 	// Set expiration time
 	expiration := time.Now()
-	expiration = expiration.AddDate(1, 0, 0)
+	expiration = time.Now().Add(time.Second * time.Duration(15))
 
 	// Generate cookie
 	cookie := http.Cookie{Name: "username", Value: "rain", Path: "/", Expires: expiration}
@@ -120,6 +121,9 @@ func setCookie(w http.ResponseWriter, r *http.Request) {
 }
 
 func clearCookie(w http.ResponseWriter, cookie *http.Cookie) {
+	if cookie == nil {
+		return
+	}
 	cookie.Value = ""
 	// Set cookie
 	http.SetCookie(w, cookie)

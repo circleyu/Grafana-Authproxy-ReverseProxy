@@ -9,7 +9,6 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"strings"
-	"time"
 )
 
 type viewFunc func(http.ResponseWriter, *http.Request)
@@ -17,7 +16,7 @@ type viewFunc func(http.ResponseWriter, *http.Request)
 var proxy *httputil.ReverseProxy
 
 func main() {
-	remote, err := url.Parse("http://localhost:3000/")
+	remote, err := url.Parse("http://grafana:3000/")
 	if err != nil {
 		panic(err)
 	}
@@ -87,6 +86,7 @@ func basicAuth(w http.ResponseWriter, r *http.Request) {
 			pair := bytes.SplitN(payload, []byte(":"), 2)
 			if len(pair) == 2 && bytes.Equal(pair[0], user) &&
 				bytes.Equal(pair[1], passwd) {
+				r.Header.Add("X-WEBAUTH-USER", string(user))
 				// 執行函式
 				setCookie(w, r)
 				proxyHandler(w, r)
@@ -103,43 +103,6 @@ func basicAuth(w http.ResponseWriter, r *http.Request) {
 }
 
 func proxyHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("X-Frame-Options", "allow-from http://localhost:3000/")
+	w.Header().Set("X-Frame-Options", "allow-from http://grafana:3000/")
 	proxy.ServeHTTP(w, r)
-}
-
-// SetCookie will set cookies in the user browser
-func setCookie(w http.ResponseWriter, r *http.Request) {
-
-	// Set expiration time
-	expiration := time.Now()
-	expiration = time.Now().Add(time.Second * time.Duration(15))
-
-	// Generate cookie
-	cookie := http.Cookie{Name: "username", Value: "rain", Path: "/", Expires: expiration}
-	// Set cookie
-	http.SetCookie(w, &cookie)
-}
-
-func clearCookie(w http.ResponseWriter, cookie *http.Cookie) {
-	if cookie == nil {
-		return
-	}
-	cookie.Value = ""
-	// Set cookie
-	http.SetCookie(w, cookie)
-	log.Println(fmt.Sprintf("del cookie : %s", cookie))
-}
-
-func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
-	if cookie, err := r.Cookie("username"); err == nil {
-		return cookie
-	}
-	return nil
-}
-
-func isCookieExist(cookie *http.Cookie) bool {
-	if cookie == nil {
-		return false
-	}
-	return cookie.Value != ""
 }

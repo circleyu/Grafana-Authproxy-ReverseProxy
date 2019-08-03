@@ -1,0 +1,26 @@
+version: "3.1"
+
+networks:
+    reverse-proxy:
+        driver: bridge
+
+services:
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        restart: always
+        volumes:
+            - ./grafana.ini:/etc/grafana/grafana.ini
+        ports:
+            - "3000:3000"
+        networks:
+            - reverse-proxy
+
+    reverseproxy:
+        image: grafana-authproxy-reverseproxy
+        container_name: reverseproxy
+        restart: always
+        ports:
+            - "8080:8080"
+        networks:
+            - reverse-proxy

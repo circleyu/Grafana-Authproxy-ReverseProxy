@@ -3,20 +3,36 @@ package main
 import (
 	"bytes"
 	"encoding/base64"
-	"fmt"
-	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"os"
 	"strings"
 )
 
 type viewFunc func(http.ResponseWriter, *http.Request)
 
-var proxy *httputil.ReverseProxy
+var (
+	proxy         *httputil.ReverseProxy
+	listenPort    string
+	adminPassWord string
+	grafanaURL    string
+)
+
+func init() {
+	if listenPort = os.Getenv("LISTEN_PORT"); listenPort == "" {
+		listenPort = "8080"
+	}
+	if adminPassWord = os.Getenv("ADMIN_PASSWORD"); adminPassWord == "" {
+		adminPassWord = "admin"
+	}
+	if grafanaURL = os.Getenv("GRAFANA_URL"); adminPassWord == "" {
+		grafanaURL = "http://localhost:3000/"
+	}
+}
 
 func main() {
-	remote, err := url.Parse("http://grafana:3000/")
+	remote, err := url.Parse(grafanaURL)
 	if err != nil {
 		panic(err)
 	}
@@ -26,13 +42,17 @@ func main() {
 	// 塞入要pass的handler
 	http.HandleFunc("/", mainHandler)
 
-	err = http.ListenAndServe(":8080", nil)
+	err = http.ListenAndServe(":"+listenPort, nil)
 	if err != nil {
 		panic(err)
 	}
 }
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
+	if grafana(w, r) {
+		return
+	}
+
 	if api(w, r) {
 		return
 	}
@@ -40,8 +60,6 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 	cookie := getCookie(w, r)
 
 	logout(w, r, cookie)
-
-	log.Println(fmt.Sprintf("get cookie : %s", cookie))
 
 	if isCookieExist(cookie) {
 		proxyHandler(w, r)
@@ -54,6 +72,17 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 func api(w http.ResponseWriter, r *http.Request) bool {
 	if strings.Contains(r.RequestURI, "/api/") {
 		r.Header.Del("X-WEBAUTH-USER")
+		proxyHandler(w, r)
+		return true
+	}
+	return false
+}
+
+func grafana(w http.ResponseWriter, r *http.Request) bool {
+	if strings.Contains(r.RequestURI, "/grafana/") {
+		r.Header.Del("X-WEBAUTH-USER")
+		r.Header.Add("Authorization", "Basic YWRtaW46YWRtaW4=")
+		r.Header.Add("X-WEBAUTH-USER", "admin")
 		proxyHandler(w, r)
 		return true
 	}
@@ -103,6 +132,6 @@ func basicAuth(w http.ResponseWriter, r *http.Request) {
 }
 
 func proxyHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("X-Frame-Options", "allow-from http://grafana:3000/")
+	w.Header().Set("X-Frame-Options", "allow-from http://localhost:3000/")
 	proxy.ServeHTTP(w, r)
 }

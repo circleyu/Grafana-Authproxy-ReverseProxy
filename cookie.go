@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"net/http"
 	"time"
 )
@@ -27,7 +25,6 @@ func clearCookie(w http.ResponseWriter, cookie *http.Cookie) {
 	cookie.Value = ""
 	// Set cookie
 	http.SetCookie(w, cookie)
-	log.Println(fmt.Sprintf("clear cookie : %s", cookie))
 }
 
 func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {

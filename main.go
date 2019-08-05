@@ -26,7 +26,7 @@ func init() {
 	if adminPassWord = os.Getenv("ADMIN_PASSWORD"); adminPassWord == "" {
 		adminPassWord = "admin"
 	}
-	if grafanaURL = os.Getenv("GRAFANA_URL"); adminPassWord == "" {
+	if grafanaURL = os.Getenv("GRAFANA_URL"); grafanaURL == "" {
 		grafanaURL = "http://localhost:3000/"
 	}
 }
@@ -49,11 +49,7 @@ func main() {
 }
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-	if grafana(w, r) {
-		return
-	}
-
-	if api(w, r) {
+	if create(w, r) {
 		return
 	}
 
@@ -69,21 +65,9 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 	basicAuth(w, r)
 }
 
-func api(w http.ResponseWriter, r *http.Request) bool {
-	if strings.Contains(r.RequestURI, "/api/") {
-		r.Header.Del("X-WEBAUTH-USER")
-		proxyHandler(w, r)
-		return true
-	}
-	return false
-}
-
-func grafana(w http.ResponseWriter, r *http.Request) bool {
-	if strings.Contains(r.RequestURI, "/grafana/") {
-		r.Header.Del("X-WEBAUTH-USER")
-		r.Header.Add("Authorization", "Basic YWRtaW46YWRtaW4=")
-		r.Header.Add("X-WEBAUTH-USER", "admin")
-		proxyHandler(w, r)
+func create(w http.ResponseWriter, r *http.Request) bool {
+	if r.Method == "POST" && strings.Contains(r.RequestURI, "/create/") {
+		createHandler(w, r)
 		return true
 	}
 	return false

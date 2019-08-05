@@ -1,0 +1,1293 @@
+{
+  "dashboard": {
+    "description": "Visualize estimated AWS charges per AWS resource (EC2, S3, ...)",
+    "editable": false,
+    "gnetId": 139,
+    "graphTooltip": 0,
+    "id": null,
+    "iteration": 1557428581228,
+    "links": [],
+    "panels": [
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "$datasource",
+        "editable": true,
+        "error": false,
+        "fill": 1,
+        "grid": {},
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "hideEmpty": false,
+          "hideZero": false,
+          "max": true,
+          "min": true,
+          "show": true,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "percentage": false,
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "alias": "Total",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "A",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonEC2"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "B",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonRDS"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "C",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonS3"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "D",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonCloudWatch"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "E",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonDynamoDB"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "F",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "ElasticMapReduce"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "G",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSDataTransfer"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "H",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonECR"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "I",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonRoute53"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "J",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSQueueService"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "K",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonES"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "L",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonKinesis"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "M",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "awskms"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "N",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSLambda"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "O",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSCloudTrail"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "P",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSDirectConnect"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "Q",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonSNS"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "R",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonVPC"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "S",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonEFS"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "T",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonElastiCache"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "U",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "application": {
+              "filter": ""
+            },
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonSimpleDB"
+            },
+            "expression": "",
+            "functions": [],
+            "group": {
+              "filter": ""
+            },
+            "highResolution": false,
+            "host": {
+              "filter": ""
+            },
+            "id": "",
+            "item": {
+              "filter": ""
+            },
+            "metricName": "EstimatedCharges",
+            "mode": 0,
+            "namespace": "AWS/Billing",
+            "options": {
+              "showDisabledItems": false
+            },
+            "period": "",
+            "refId": "V",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSAppSync"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "W",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonApiGateway"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "X",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonCloudFront"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "Y",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonAthena"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "Z",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonECS"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AA",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonRedshift"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AB",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSConfig"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AC",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSMarketplace"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AD",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "CodeBuild"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AE",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonSageMaker"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AF",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonMacie"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AG",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonQuickSight"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AH",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonGuardDuty"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AI",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSServiceCatalog"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AJ",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonKinesisFirehose"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AK",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AWSIoT"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AL",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonGlacier"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AM",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          },
+          {
+            "alias": "{{ServiceName}}",
+            "dimensions": {
+              "Currency": "USD",
+              "ServiceName": "AmazonSES"
+            },
+            "expression": "",
+            "highResolution": false,
+            "id": "",
+            "metricName": "EstimatedCharges",
+            "namespace": "AWS/Billing",
+            "period": "",
+            "refId": "AN",
+            "region": "us-east-1",
+            "returnData": false,
+            "statistics": [
+              "Average"
+            ]
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Estimated charges",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": 0,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 18,
+    "style": "dark",
+    "tags": [
+      "monitoringartist",
+      "cloudwatch"
+    ],
+    "templating": {
+      "list": [
+        {
+          "hide": 0,
+          "includeAll": false,
+          "label": "Datasource",
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "query": "cloudwatch",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "AWS Billing",
+    "uid": "AWSBillin",
+    "version": 1
+  },
+  "folderId": 0,
+  "overwrite": false
+}

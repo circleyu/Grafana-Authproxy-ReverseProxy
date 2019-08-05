@@ -1,0 +1,494 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "AWS CloudFront",
+    "description": "Visualize AWS CloudFront metrics",
+    "tags": [
+      "monitoringartist",
+      "cloudwatch"
+    ],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "hideControls": false,
+    "sharedCrosshair": false,
+    "rows": [
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "CloudWatch",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 16,
+            "isNew": true,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "VolumeIdleTime_Average",
+                "yaxis": 2
+              }
+            ],
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "alias": "",
+                "application": {
+                  "filter": ""
+                },
+                "dimensions": {
+                  "Region": "Global",
+                  "DistributionId": "$distributionid"
+                },
+                "functions": [],
+                "group": {
+                  "filter": ""
+                },
+                "host": {
+                  "filter": ""
+                },
+                "item": {
+                  "filter": ""
+                },
+                "metricName": "Requests",
+                "mode": 0,
+                "namespace": "AWS/CloudFront",
+                "options": {
+                  "showDisabledItems": false
+                },
+                "period": "",
+                "refId": "A",
+                "region": "us-east-1",
+                "statistics": [
+                  "Sum"
+                ]
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Requests",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "none",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": false
+              }
+            ]
+          }
+        ],
+        "title": "New row"
+      },
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "CloudWatch",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 17,
+            "isNew": true,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "null as zero",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "VolumeIdleTime_Average",
+                "yaxis": 2
+              }
+            ],
+            "span": 12,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "alias": "",
+                "application": {
+                  "filter": ""
+                },
+                "dimensions": {
+                  "Region": "Global",
+                  "DistributionId": "$distributionid"
+                },
+                "functions": [],
+                "group": {
+                  "filter": ""
+                },
+                "host": {
+                  "filter": ""
+                },
+                "item": {
+                  "filter": ""
+                },
+                "metricName": "4xxErrorRate",
+                "mode": 0,
+                "namespace": "AWS/CloudFront",
+                "options": {
+                  "showDisabledItems": false
+                },
+                "period": "",
+                "refId": "A",
+                "region": "us-east-1",
+                "statistics": [
+                  "Average"
+                ]
+              },
+              {
+                "alias": "",
+                "application": {
+                  "filter": ""
+                },
+                "dimensions": {
+                  "Region": "Global",
+                  "DistributionId": "$distributionid"
+                },
+                "functions": [],
+                "group": {
+                  "filter": ""
+                },
+                "host": {
+                  "filter": ""
+                },
+                "item": {
+                  "filter": ""
+                },
+                "metricName": "5xxErrorRate",
+                "mode": 0,
+                "namespace": "AWS/CloudFront",
+                "options": {
+                  "showDisabledItems": false
+                },
+                "period": "",
+                "refId": "B",
+                "region": "us-east-1",
+                "statistics": [
+                  "Average"
+                ]
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "ErrorRate",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percent",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": false
+              }
+            ]
+          }
+        ],
+        "title": "New row"
+      },
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "CloudWatch",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 18,
+            "isNew": true,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "VolumeIdleTime_Average",
+                "yaxis": 2
+              }
+            ],
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "alias": "",
+                "application": {
+                  "filter": ""
+                },
+                "dimensions": {
+                  "Region": "Global",
+                  "DistributionId": "$distributionid"
+                },
+                "functions": [],
+                "group": {
+                  "filter": ""
+                },
+                "host": {
+                  "filter": ""
+                },
+                "item": {
+                  "filter": ""
+                },
+                "metricName": "BytesDownloaded",
+                "mode": 0,
+                "namespace": "AWS/CloudFront",
+                "options": {
+                  "showDisabledItems": false
+                },
+                "period": "",
+                "refId": "A",
+                "region": "us-east-1",
+                "statistics": [
+                  "Sum"
+                ]
+              },
+              {
+                "alias": "",
+                "application": {
+                  "filter": ""
+                },
+                "dimensions": {
+                  "Region": "Global",
+                  "DistributionId": "$distributionid"
+                },
+                "functions": [],
+                "group": {
+                  "filter": ""
+                },
+                "host": {
+                  "filter": ""
+                },
+                "item": {
+                  "filter": ""
+                },
+                "metricName": "BytesUploaded",
+                "mode": 0,
+                "namespace": "AWS/CloudFront",
+                "options": {
+                  "showDisabledItems": false
+                },
+                "period": "",
+                "refId": "B",
+                "region": "us-east-1",
+                "statistics": [
+                  "Sum"
+                ]
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bytes",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": false
+              }
+            ]
+          }
+        ],
+        "title": "New row"
+      }
+    ],
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {},
+          "datasource": "CloudWatch",
+          "hide": 0,
+          "includeAll": false,
+          "label": "DistributionId",
+          "multi": false,
+          "name": "distributionid",
+          "options": [],
+          "query": "dimension_values(us-east-1, AWS/CloudFront, Requests, DistributionId)",
+          "refresh": 1,
+          "regex": "",
+          "sort": 0,
+          "tagValuesQuery": null,
+          "tagsQuery": null,
+          "type": "query"
+        }
+      ]
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": false,
+    "schemaVersion": 13,
+    "version": 1,
+    "links": [],
+    "gnetId": 674
+  },
+  "folderId": 0,
+  "overwrite": false
+}

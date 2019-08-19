@@ -1,11 +1,13 @@
 FROM golang:latest AS buildStage
-WORKDIR /go/src/ReverseProxy
+WORKDIR /ReverseProxy
+COPY go.mod go.sum ./
+RUN  go mod download
 COPY . .
 RUN CGO_ENABLED=0 go build
 
 FROM scratch
 WORKDIR /app
-COPY --from=buildStage /go/src/ReverseProxy/ReverseProxy .
-COPY --from=buildStage /go/src/ReverseProxy/dashboard ./dashboard/
+COPY --from=buildStage /ReverseProxy/ReverseProxy .
+COPY --from=buildStage /ReverseProxy/dashboard ./dashboard/
 EXPOSE 8080
 ENTRYPOINT ["/app/ReverseProxy"]

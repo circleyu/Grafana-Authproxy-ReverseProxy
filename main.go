@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bytes"
-	"encoding/base64"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -39,7 +37,6 @@ func main() {
 
 	proxy = httputil.NewSingleHostReverseProxy(remote)
 
-	// 塞入要pass的handler
 	http.HandleFunc("/", mainHandler)
 
 	err = http.ListenAndServe(":"+listenPort, nil)
@@ -49,11 +46,11 @@ func main() {
 }
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-	if create(w, r) {
+	if createAPI(w, r) {
 		return
 	}
 
-	cookie := getCookie(w, r)
+	cookie := getCookie(r)
 
 	logout(w, r, cookie)
 
@@ -65,7 +62,7 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 	basicAuth(w, r)
 }
 
-func create(w http.ResponseWriter, r *http.Request) bool {
+func createAPI(w http.ResponseWriter, r *http.Request) bool {
 	if r.Method == "POST" && strings.Contains(r.RequestURI, "/create/") {
 		createHandler(w, r)
 		return true
@@ -81,41 +78,26 @@ func logout(w http.ResponseWriter, r *http.Request, cookie *http.Cookie) {
 }
 
 func basicAuth(w http.ResponseWriter, r *http.Request) {
+	m := r.URL.Query()
 
-	user := []byte("admin")
-	passwd := []byte("admin")
-
-	basicAuthPrefix := "Basic "
-
-	// 獲取 request header
-	auth := r.Header.Get("Authorization")
-	// 如果是 http basic auth
-	if strings.HasPrefix(auth, basicAuthPrefix) {
-		// 解析認證訊息
-		payload, err := base64.StdEncoding.DecodeString(
-			auth[len(basicAuthPrefix):],
-		)
-		if err == nil {
-			pair := bytes.SplitN(payload, []byte(":"), 2)
-			if len(pair) == 2 && bytes.Equal(pair[0], user) &&
-				bytes.Equal(pair[1], passwd) {
-				r.Header.Add("X-WEBAUTH-USER", string(user))
-				// 執行函式
-				setCookie(w, r)
-				proxyHandler(w, r)
-				return
-			}
-		}
+	userName, ok := m["user"]
+	if !ok {
+		// 認證失敗，提示 401 Unauthorized
+		// Restricted 可以改成其他的值
+		w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
+		// 401
+		w.WriteHeader(http.StatusUnauthorized)
+		return
 	}
 
-	// 認證失敗，提示 401 Unauthorized
-	// Restricted 可以改成其他的值
-	w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
-	// 401
-	w.WriteHeader(http.StatusUnauthorized)
+	r.SetBasicAuth(userName[0], userName[0])
+	r.Header.Add("X-WEBAUTH-USER", userName[0])
+	w.Header().Set("X-Frame-Options", "allow-from "+grafanaURL)
+	setCookie(w, userName[0])
+	proxy.ServeHTTP(w, r)
 }
 
 func proxyHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("X-Frame-Options", "allow-from http://localhost:3000/")
+	w.Header().Set("X-Frame-Options", "allow-from "+grafanaURL)
 	proxy.ServeHTTP(w, r)
 }

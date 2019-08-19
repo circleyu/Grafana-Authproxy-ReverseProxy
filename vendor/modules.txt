@@ -1,6 +1,0 @@
-# github.com/dghubble/sling v1.3.0
-github.com/dghubble/sling
-# github.com/dgrijalva/jwt-go v3.2.0+incompatible
-github.com/dgrijalva/jwt-go
-# github.com/google/go-querystring v1.0.0
-github.com/google/go-querystring/query

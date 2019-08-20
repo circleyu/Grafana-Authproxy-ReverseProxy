@@ -1,4 +1,4 @@
-# grafana-auth-proxy
+## 介紹
 透過Reverse Proxy以及URL中的Query內容，來實現快速登入Grafana的功能
 
 ## 執行

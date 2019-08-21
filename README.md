@@ -1,5 +1,8 @@
 ## 介紹
-透過Reverse Proxy以及URL中的Query內容，來實現快速登入Grafana的功能
+透過Reverse Proxy以及URL中的Query內容，來實現快速登入Grafana的功能<br>
+```
+http://localhost:8080/?user=使用者名稱
+```
 
 ## 執行
 這邊是透過docker來執行的，在[docker-compose.yml](https://github.com/grandtechcloud/Grafana-Authproxy-ReverseProxy/blob/master/docker-compose.yml)裡面有環境變數需要設定

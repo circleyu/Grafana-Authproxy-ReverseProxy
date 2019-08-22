@@ -98,6 +98,8 @@ func basicAuth(w http.ResponseWriter, r *http.Request) {
 }
 
 func proxyHandler(w http.ResponseWriter, r *http.Request) {
+	cookie := getCookie(r)
+	r.SetBasicAuth(cookie.Value, cookie.Value)
 	w.Header().Set("X-Frame-Options", "allow-from "+grafanaURL)
 	proxy.ServeHTTP(w, r)
 }

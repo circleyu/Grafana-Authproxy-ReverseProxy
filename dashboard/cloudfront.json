@@ -487,6 +487,7 @@
     "schemaVersion": 13,
     "version": 1,
     "links": [],
+    "uid":"AWSCFront",
     "gnetId": 674
   },
   "folderId": 0,

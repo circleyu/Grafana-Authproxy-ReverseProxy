@@ -1412,6 +1412,7 @@
     "schemaVersion": 12,
     "version": 1,
     "links": [],
+    "uid":"AWSRds000",
     "gnetId": 707
   },
   "folderId": 0,

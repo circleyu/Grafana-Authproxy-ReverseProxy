@@ -1637,6 +1637,7 @@
     "schemaVersion": 12,
     "version": 20,
     "links": [],
+    "uid":"AWSECRedis",
     "gnetId": 593
   },
   "folderId": 0,

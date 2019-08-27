@@ -423,7 +423,8 @@
     "schemaVersion": 13,
     "version": 3,
     "links": [],
-    "gnetId": 677
+    "gnetId": 677,
+    "uid": "AWSAutoS"
   },
   "folderId": 0,
   "overwrite": false

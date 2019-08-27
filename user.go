@@ -44,3 +44,31 @@ func createUser(slingClient *sling.Sling, userName string, email string) (int, e
 
 	return data.ID, nil
 }
+
+type userData struct {
+	ID             int    `json:"id"`
+	Email          string `json:"email"`
+	Name           string `json:"name"`
+	Login          string `json:"login"`
+	Theme          string `json:"theme"`
+	OrgID          int    `json:"orgId"`
+	IsGrafanaAdmin bool   `json:"isGrafanaAdmin"`
+}
+
+func getUser(slingClient *sling.Sling, userName string) (userData, error) {
+	path := "/api/users/lookup?loginOrEmail=" + userName
+
+	var data userData
+	var err2 error
+	_, err := slingClient.New().Get(path).Receive(&data, err2)
+
+	if err == nil {
+		err = err2
+	}
+	if err != nil {
+		log.Print(err)
+		return data, err
+	}
+
+	return data, nil
+}

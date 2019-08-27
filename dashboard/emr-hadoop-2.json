@@ -1615,6 +1615,7 @@
     "schemaVersion": 12,
     "version": 1,
     "links": [],
+    "uid":"AWSEMRhadoop",
     "gnetId": 607
   },
   "folderId": 0,

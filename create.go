@@ -2,9 +2,7 @@ package main
 
 import (
 	"bytes"
-	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -20,14 +18,10 @@ type createData struct {
 
 func createHandler(w http.ResponseWriter, r *http.Request) {
 
-	s := fmt.Sprintf("admin:%s", adminPassWord)
-	base64String := fmt.Sprintf("Basic %s", base64.StdEncoding.EncodeToString([]byte(s)))
-
 	slingClient := sling.New().Base(grafanaURL).Client(nil)
 	slingClient.Set("Accept", "application/json")
 	slingClient.Set("Content-Type", "application/json")
-	slingClient.Set("Authorization", base64String)
-
+	slingClient.SetBasicAuth("admin", adminPassWord)
 	// 這邊傳進來的時候會帶著accessKey、secretKey、userName、email
 	buf := new(bytes.Buffer)
 	io.Copy(buf, r.Body)

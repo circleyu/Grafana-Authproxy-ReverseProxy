@@ -532,6 +532,7 @@
     },
     "timezone": "browser",
     "title": "AWS SES",
+    "uid":"AWSSes000",
     "version": 6
   },
   "folderId": 0,

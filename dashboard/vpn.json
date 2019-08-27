@@ -384,6 +384,7 @@
     },
     "timezone": "browser",
     "title": "AWS VPN",
+    "uid":"AWSVpn000",
     "version": 2
   },
   "folderId": 0,

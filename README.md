@@ -1,7 +1,7 @@
 ## 介紹
 透過Reverse Proxy以及URL中的Query內容，來實現快速登入Grafana的功能<br>
 ```
-http://localhost:8080/?user=使用者名稱
+http://localhost:8080/dashboards?user=使用者名稱
 ```
 
 ## 執行
@@ -9,10 +9,11 @@ http://localhost:8080/?user=使用者名稱
 
 ```json
 environment:
-  - LISTEN_PORT=8080
   - ADMIN_PASSWORD=admin
   - GRAFANA_URL=http://grafana:3000/
 ```
+## 在新增User之前
+需要在AWS帳戶新增一個只有AWS CloudWatch讀取權限的使用者
 
 ## 新增User
 提供了API接口，只需要將下方的資料結構POST到create這個API即可<br>
@@ -29,10 +30,23 @@ http://localhost:8080/create/
 	"secretKey": ""
 }
 ```
+目前會預設建置EC2的dashboard
 
-## dashboard
-目前預設只會建置EC2的dashboard<br>
-其餘的請手動在Grafana建置，直接在Grafana導入[dashboard](https://github.com/grandtechcloud/Grafana-Authproxy-ReverseProxy/tree/master/dashboard)目錄下的json檔案
+## 新增dashboard
+提供了API接口，只需要將下方的資料結構POST到add這個API即可<br>
+ex:
+```
+http://localhost:8080/add/
+```
 
-## 實作參考
-[這邊](https://www.annhe.net/article-3551.html)
+```json
+{
+	"userName": "",
+	"dashboard": [""]
+}
+```
+dashboard請填入[dashboard](https://github.com/grandtechcloud/Grafana-Authproxy-ReverseProxy/tree/master/dashboard)目錄下的json檔案名稱，如果填入all則會全部都建置。
+
+## Grafana admin登入
+反向代理伺服器有擋Admin的登入，以防被他人登入後串改<br>
+Admin可以透過Grafana的URL來登入並管理內容
